@@ -1,0 +1,241 @@
+---
+// 精选项目：编号 + 企业/个人标签 + 亮点 + 技术栈
+const projects = [
+  {
+    num: '01',
+    tag: '企业项目',
+    name: 'AI Cowork 智能体办公平台',
+    period: '2025.12 - 至今',
+    desc: '企业级智能体办公平台，以「主智能体推理 + 子智能体协作 + Skill/MCP 工具扩展 + 分层记忆 + 沙箱代码执行 + Artifact 资产 + 自动化任务」为核心架构，将普通聊天系统升级为可调用工具、生成文件、沉淀团队资产的 Agent 系统。',
+    highlights: [
+      '基于 AgentScope ReActAgent 构建主智能体执行链路，按会话动态装配模型、Skill、MCP、知识库与子智能体',
+      '建设 ChatRun + Redis Stream + SSE 流式运行链路，支持任务续播、取消、异常恢复与工具调用事件追踪',
+      '接入 stdio / Streamable HTTP 形态 MCP 工具，通过连接池与生命周期管理避免子进程 / 连接泄漏',
+      '建设上下文压缩、分层记忆与沙箱代码执行能力，支持 Artifact 文件沉淀与 cron 定时 Agent 任务',
+    ],
+    result: '接入十余个内部 Skill / MCP 工具，支撑数千级文档知识库；完成前端、后端、Redis、PostgreSQL、Milvus、Neo4j 等 7+ 组件的 Docker Compose 私有化部署。',
+    stack: ['AgentScope', 'ReAct Agent', 'MCP', 'SSE', 'Redis Stream', 'FastAPI', 'Milvus', 'Docker Compose', 'React'],
+  },
+  {
+    num: '02',
+    tag: '企业项目',
+    name: '知识库解析与 RAG 检索服务',
+    period: '2025.09 - 2025.12',
+    desc: '面向企业知识库的文档解析、向量化入库与检索增强服务，为 Agent 平台与报告生成系统提供统一知识底座。参考 RAGFlow 的文档处理思路，支持多格式解析、复杂 PDF、父子 Chunk 与混合检索。',
+    highlights: [
+      '设计 PDF / DOCX / WPS / XLSX / CSV / TXT / Markdown 等 9 类文档解析链路，老版本 Office 经 LibreOffice 转换兼容',
+      '接入并部署 MinerU 解析模型处理复杂 PDF、扫描件，普通解析失败自动降级',
+      '设计父子 Chunk 切分策略：父块保留完整语义、子块向量召回；构建 Milvus 索引支持权限过滤与混合检索',
+      '预研 RAGFlow 知识图谱方案，以实体 / 关系抽取增强多跳问答能力',
+    ],
+    result: '支撑内部知识库数千级文档处理，覆盖 9 类办公文档格式；为 Agent 平台与智能报告系统提供统一 RAG 检索底座。',
+    stack: ['FastAPI', 'MinerU', 'LibreOffice', 'Milvus', 'Reranker', 'Elasticsearch', 'Pandoc', 'Docker'],
+  },
+  {
+    num: '03',
+    tag: '企业项目',
+    name: '智能报告生成服务',
+    period: '2025.06 - 2025.09',
+    desc: '面向产业报告、招商报告、技术报告与标准化 Word 报告的智能生成服务：一类基于大纲 + 知识库 + 网络检索的长报告生成，一类基于结构化数据与 Word 模板的标准化报告自动填充，体现「数据 + 模板 + RAG + 大模型」的业务落地。',
+    highlights: [
+      '设计「参考大纲解析 + 业务大纲融合 + LLM 大纲生成」的报告规划流程',
+      '基于 FastAPI + asyncio 构建章节级并行生成机制，支持并发、超时控制、失败重试与结果顺序聚合',
+      '每章节接入网络检索与知识库工具，按上下文构造检索与写作 Prompt，保证事实覆盖度',
+      '建设引用溯源流程：来源整理、去重、编号校验，生成规范引用标记与参考来源列表',
+    ],
+    result: '支持 4 类报告生成，将人工数小时的资料整理与章节撰写压缩至分钟级初稿产出。',
+    stack: ['Python', 'FastAPI', 'asyncio', 'SSE', 'docxtpl', 'ECharts', 'Elasticsearch', 'MySQL', 'Milvus'],
+  },
+  {
+    num: '04',
+    tag: '个人项目',
+    name: '个人 AI 应用与开源工具',
+    period: '持续实践',
+    desc: '独立完成的 AI 应用实践，覆盖从需求到上线的完整闭环，探索 Agent 能力在日常场景的落地。',
+    highlights: [
+      'AI 合同自动生成应用：大模型抽取合同关键字段自动填充模板，单份合同制作由约 5 分钟降至 30 秒',
+      '播客摘要 MVP：独立完成产品设计与开发，支持摘要、金句抽取、时间戳定位与点击跳转播放',
+      'AI 编程记录归档 CLI（Go）：合并不同 AI 编程工具与 Agent 框架的聊天记录，支持归档与结构化整理',
+    ],
+    result: '三个独立落地的个人应用，均已有实际使用场景。',
+    stack: ['Python', 'Go', 'FastAPI', 'LLM', 'CLI'],
+  },
+];
+---
+
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="num mono">01.</span>
+      精选项目
+      <span class="title-note">Select Works</span>
+    </h2>
+
+    <div class="projects">
+      {
+        projects.map((p) => (
+          <article class="project">
+            <div class="project-head">
+              <span class="project-num mono">{p.num}</span>
+              <span class="project-tag mono">{p.tag}</span>
+              <h3 class="project-name">{p.name}</h3>
+              <span class="project-period mono">{p.period}</span>
+            </div>
+
+            <p class="project-desc">{p.desc}</p>
+
+            <ul class="project-list">
+              {p.highlights.map((h) => <li>{h}</li>)}
+            </ul>
+
+            <p class="project-result">
+              <span class="result-label mono">成果</span>{p.result}
+            </p>
+
+            <div class="project-stack">
+              {p.stack.map((s) => <span class="chip mono">{s}</span>)}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .title-note {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--faint);
+    letter-spacing: 0.02em;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .project {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px 40px 30px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .project:hover {
+    border-color: #cfc9bb;
+    transform: translateY(-2px);
+  }
+
+  .project-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .project-num {
+    color: var(--faint);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .project-tag {
+    font-size: 11.5px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+
+  .project-name {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .project-period {
+    margin-left: auto;
+    color: var(--faint);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 15.5px;
+    margin-bottom: 16px;
+  }
+
+  .project-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .project-list li {
+    position: relative;
+    padding-left: 18px;
+    color: var(--text);
+    font-size: 15px;
+  }
+
+  .project-list li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--accent);
+    opacity: 0.7;
+  }
+
+  .project-result {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+
+  .result-label {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    vertical-align: 1px;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .project-stack .chip {
+    font-size: 12.5px;
+  }
+
+  @media (max-width: 640px) {
+    .project {
+      padding: 26px 22px 22px;
+    }
+    .project-period {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+</style>

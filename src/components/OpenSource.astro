@@ -1,0 +1,131 @@
+---
+// 开源贡献：腾讯 WeKnora
+const pr = {
+  org: 'Tencent / WeKnora',
+  role: 'Contributor',
+  title: '修复 TaskInspector 周期性误报惰性 asynq 队列不存在的问题',
+  prUrl: 'https://github.com/Tencent/WeKnora/pull/2218',
+  issueUrl: 'https://github.com/Tencent/WeKnora/issues/2139',
+  period: '2026.07',
+  points: [
+    '定位 asynq v0.26.0 Inspector.GetQueueInfo 直接透传内部 NOT_FOUND 错误、未包装为 ErrQueueNotFound 的根因，实现兼容判定，保留对真实异常的告警',
+    '补充 sentinel、wrapped error、误匹配防护及 miniredis 回归测试',
+    'PR #2218 通过自动开源扫描与检查后由维护者直接合并至 main，关联 Issue #2139 随之解决',
+  ],
+  stack: ['Go', 'asynq', 'Redis', 'miniredis', '单元测试'],
+};
+---
+
+<section id="open-source" class="section">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="num mono">03.</span>
+      开源贡献
+      <span class="title-note">Open Source</span>
+    </h2>
+
+    <article class="oss-card">
+      <div class="oss-head">
+        <div>
+          <span class="oss-org mono">{pr.org} · {pr.role}</span>
+          <span class="oss-period mono">{pr.period}</span>
+        </div>
+        <a class="oss-link mono" href={pr.prUrl} target="_blank" rel="noreferrer">PR #2218 ↗</a>
+      </div>
+      <h3 class="oss-title">{pr.title}</h3>
+      <ul class="oss-points">
+        {pr.points.map((p) => <li>{p}</li>)}
+      </ul>
+      <div class="oss-stack">
+        {pr.stack.map((s) => <span class="chip mono">{s}</span>)}
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .title-note {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--faint);
+  }
+
+  .oss-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 28px 32px;
+  }
+
+  .oss-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .oss-org {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .oss-period {
+    margin-left: 12px;
+    color: var(--faint);
+    font-size: 12.5px;
+  }
+
+  .oss-link {
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+
+  .oss-title {
+    font-size: 18.5px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .oss-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .oss-points li {
+    position: relative;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .oss-points li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--accent);
+    opacity: 0.7;
+  }
+
+  .oss-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .oss-stack .chip {
+    font-size: 12.5px;
+  }
+</style>

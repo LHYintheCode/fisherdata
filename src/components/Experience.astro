@@ -1,0 +1,194 @@
+---
+// 工作经历 + 教育背景（时间线式）
+const jobs = [
+  {
+    company: '杭州量知科技有限公司',
+    role: 'AI Agent 应用开发工程师',
+    period: '2025.06 - 至今',
+    location: '杭州',
+    points: [
+      '参与 AI Cowork 智能体办公平台的 Agent 执行链路、能力接入与私有化部署，推动平台从聊天工具向可执行办公任务的 Agent 系统演进',
+      '主导智能报告生成、知识库解析与 RAG 检索等大模型应用项目，覆盖 Prompt 设计、文档解析、向量检索、工具调用、SSE 流式输出与 Word 生成',
+      '参与 Skill / MCP / 知识库接入、分层记忆、沙箱代码执行与自动化任务等核心能力建设',
+    ],
+  },
+  {
+    company: '北明软件有限公司',
+    role: '算法工程师',
+    period: '2020.04 - 2025.05',
+    location: '合肥',
+    points: [
+      '参与电网行业解决方案的系统研发、数据处理与知识库维护，支持检索、问答、数据分析与报表需求',
+      '负责算法模块、接口模块与技术文档编写，参与系统问题排查、需求沟通与交付支持',
+      '持续学习实践大模型应用开发，为转向 RAG、Agent 与企业 AI 应用方向奠定基础',
+    ],
+  },
+];
+
+const education = [
+  { school: '新南威尔士大学（UNSW Sydney）', degree: 'Data Science and AI · 硕士', period: '2017.09 - 2020.01' },
+  { school: '沈阳航空航天大学', degree: '计算机科学与技术 · 本科', period: '2013.08 - 2017.06' },
+];
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="num mono">02.</span>
+      工作经历
+      <span class="title-note">Experience</span>
+    </h2>
+
+    <div class="timeline">
+      {
+        jobs.map((j) => (
+          <div class="job">
+            <div class="job-head">
+              <h3 class="job-company">{j.company}</h3>
+              <span class="job-role">{j.role}</span>
+              <span class="job-meta mono">
+                {j.period} · {j.location}
+              </span>
+            </div>
+            <ul class="job-points">
+              {j.points.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="education">
+      <h3 class="edu-title">教育背景</h3>
+      <div class="edu-list">
+        {
+          education.map((e) => (
+            <div class="edu-item">
+              <span class="edu-school">{e.school}</span>
+              <span class="edu-degree">{e.degree}</span>
+              <span class="edu-period mono">{e.period}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .title-note {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--faint);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  .job-head {
+    margin-bottom: 14px;
+  }
+
+  .job-company {
+    font-size: 21px;
+    font-weight: 700;
+    display: inline;
+    margin-right: 14px;
+  }
+
+  .job-role {
+    display: inline;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .job-meta {
+    display: block;
+    margin-top: 4px;
+    color: var(--faint);
+    font-size: 13px;
+  }
+
+  .job-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .job-points li {
+    position: relative;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 15.5px;
+  }
+
+  .job-points li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--accent);
+    opacity: 0.7;
+  }
+
+  .education {
+    margin-top: 56px;
+    border-top: 1px dashed var(--border);
+    padding-top: 36px;
+  }
+
+  .edu-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--faint);
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .edu-item {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .edu-school {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .edu-degree {
+    color: var(--muted);
+    font-size: 14.5px;
+  }
+
+  .edu-period {
+    margin-left: auto;
+    color: var(--faint);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .edu-period {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+</style>

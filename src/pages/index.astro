@@ -1,0 +1,46 @@
+---
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
+import OpenSource from '../components/OpenSource.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>李浩渊 · AI Agent 应用开发工程师</title>
+    <meta
+      name="description"
+      content="李浩渊，AI Agent 应用开发工程师，6 年软件/算法工程经验，近 3 年聚焦大模型应用、Agent 平台、RAG 知识库与企业级 AI 应用工程化。腾讯 WeKnora 开源贡献者。"
+    />
+    <meta property="og:title" content="李浩渊 · AI Agent 应用开发工程师" />
+    <meta
+      property="og:description"
+      content="6 年软件/算法工程经验，近 3 年聚焦大模型应用、Agent 平台、RAG 知识库与企业级 AI 应用工程化。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fisherdata.top" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <Hero />
+      <Projects />
+      <Experience />
+      <OpenSource />
+      <Skills />
+      <Contact />
+    </main>
+  </body>
+</html>

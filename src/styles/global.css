@@ -1,0 +1,162 @@
+/* ============================================================
+   Design System — 暖白 × 墨绿（方案 A）
+   背景 #F6F4EF 米白 · 强调 #4A5D4A 墨绿 · 正文 #1C1B1A 近黑
+   ============================================================ */
+
+:root {
+  --bg: #f6f4ef;
+  --card: #ffffff;
+  --text: #1c1b1a;
+  --muted: #6e6a63;
+  --faint: #8a857c;
+  --accent: #4a5d4a;
+  --accent-hover: #3a4a3a;
+  --accent-soft: #ecefea;
+  --border: #e6e1d7;
+  --tag-bg: #f0ede6;
+
+  --font-sans: "Inter", -apple-system, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Consolas, "Courier New", monospace;
+
+  --max-width: 920px;
+  --nav-height: 64px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ---------- 通用布局 ---------- */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.section {
+  padding: 72px 0;
+}
+
+.section + .section {
+  border-top: 1px solid var(--border);
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 40px;
+  scroll-margin-top: calc(var(--nav-height) + 24px);
+}
+
+.section-title .num {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ---------- 标签 ---------- */
+
+.chip {
+  display: inline-block;
+  padding: 3px 11px;
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* ---------- 按钮 ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+.btn-ghost {
+  border: 1px solid var(--text);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ---------- 代码/等宽元素 ---------- */
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+/* ---------- 响应式 ---------- */
+
+@media (max-width: 640px) {
+  body {
+    font-size: 15.5px;
+  }
+  .section {
+    padding: 56px 0;
+  }
+  .container {
+    padding: 0 20px;
+  }
+}

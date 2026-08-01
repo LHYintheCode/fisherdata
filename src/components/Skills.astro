@@ -1,0 +1,97 @@
+---
+// 技能栈：按分类展示
+const groups = [
+  {
+    name: 'AI Agent 应用开发',
+    items: ['AgentScope', 'ReAct Agent', 'Multi-Agent', 'Tool / Function Calling', 'Skill 机制', 'MCP 工具接入', 'stdio / Streamable HTTP', '工具动态注册'],
+  },
+  {
+    name: '大模型应用工程',
+    items: ['Prompt Engineering', 'RAG', '工作流编排', '长上下文治理', '结构化输出', 'SSE 流式响应', '异步任务', '人机协同确认'],
+  },
+  {
+    name: 'RAG 与知识库',
+    items: ['文档解析', 'Chunking / 父子 Chunk', 'Embedding', 'Milvus', '混合检索', 'Reranker', '引用溯源', 'GraphRAG 预研'],
+  },
+  {
+    name: '后端与工程化',
+    items: ['Python', 'Go', 'FastAPI', 'asyncio', 'MySQL', 'PostgreSQL', 'Redis', 'Elasticsearch', 'Docker Compose', 'Linux / Shell'],
+  },
+  {
+    name: '前端与联调',
+    items: ['React', 'Ant Design', 'Zustand', 'Vite', '流式消息渲染', '接口联调'],
+  },
+  {
+    name: '模型与平台',
+    items: ['Qwen', 'DeepSeek', 'ChatGLM', 'Dify', 'MinerU', 'Milvus 部署'],
+  },
+];
+---
+
+<section id="skills" class="section">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="num mono">04.</span>
+      技能栈
+      <span class="title-note">Skills</span>
+    </h2>
+
+    <div class="skills-grid">
+      {
+        groups.map((g) => (
+          <div class="skill-group">
+            <h3 class="skill-name">{g.name}</h3>
+            <div class="skill-chips">
+              {g.items.map((s) => <span class="chip mono">{s}</span>)}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .title-note {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--faint);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 48px;
+  }
+
+  .skill-name {
+    font-size: 15.5px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .skill-name::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 720px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+// 首屏 Hero：名字 + 定位 + 一句话简介 + CTA
+const socials = [
+  { href: 'https://github.com/LHYintheCode', label: 'GitHub', short: 'GitHub' },
+  { href: 'https://blog.csdn.net/ghostinthecode', label: 'CSDN 技术博客', short: 'CSDN' },
+];
+---
+
+<section id="top" class="hero">
+  <div class="container">
+    <p class="hero-kicker mono">AI Agent 应用开发工程师 · 杭州</p>
+    <h1 class="hero-name">
+      李浩渊
+      <span class="hero-divider">/</span>
+      <span class="hero-en">Li&nbsp;Haoyuan</span>
+    </h1>
+    <p class="hero-desc">
+      6 年软件 / 算法工程经验，近 3 年聚焦<b>大模型应用、Agent 平台、RAG 知识库</b>与企业级
+      AI 应用工程化。具备从需求拆解、方案设计、接口开发、前后端联调到私有化部署的完整交付经验，
+      腾讯 WeKnora 开源贡献者。
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">查看项目</a>
+      <a href="#contact" class="btn btn-ghost">联系我</a>
+      {
+        socials.map((s) => (
+          <a href={s.href} target="_blank" rel="noreferrer" class="hero-social mono">{s.short} ↗</a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 96px 0 80px;
+  }
+
+  .hero-kicker {
+    color: var(--accent);
+    font-size: 14.5px;
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-name {
+    font-size: clamp(40px, 6vw, 58px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .hero-divider {
+    color: var(--faint);
+    font-weight: 300;
+    margin: 0 6px;
+  }
+
+  .hero-en {
+    color: var(--faint);
+    font-weight: 400;
+  }
+
+  .hero-desc {
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+
+  .hero-desc b {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .hero-social {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .hero-social:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: 64px 0 56px;
+    }
+  }
+</style>

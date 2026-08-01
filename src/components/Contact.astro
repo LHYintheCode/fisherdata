@@ -1,0 +1,121 @@
+---
+// 联系 + 页脚
+const contacts = [
+  { label: '邮箱', value: '935605409@qq.com', href: 'mailto:935605409@qq.com', mono: true },
+  { label: '电话', value: '137 3199 1967', href: 'tel:+8613731991967', mono: false },
+  { label: 'GitHub', value: 'github.com/LHYintheCode', href: 'https://github.com/LHYintheCode', mono: true },
+  { label: 'CSDN 技术博客', value: 'blog.csdn.net/ghostinthecode', href: 'https://blog.csdn.net/ghostinthecode', mono: true },
+];
+---
+
+<section id="contact" class="section contact">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="num mono">05.</span>
+      联系我
+      <span class="title-note">Contact</span>
+    </h2>
+
+    <p class="contact-intro">
+      正在寻找 <b>AI Agent 应用开发工程师 / 大模型应用开发工程师</b> 岗位，意向城市杭州。
+      如果你有相关机会，欢迎随时联系。
+    </p>
+
+    <div class="contact-list">
+      {
+        contacts.map((c) => (
+          <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" class="contact-item">
+            <span class="contact-label mono">{c.label}</span>
+            <span class="contact-value">{c.value}</span>
+            <span class="contact-arrow mono">↗</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="contact-cta">
+      <a href="/resume.pdf" class="btn btn-primary" target="_blank">
+        下载简历 PDF
+        <span class="mono">↓</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="mono">© 2026 李浩渊 · fisherdata.top</span>
+    <span class="mono">Built with Astro</span>
+  </div>
+</footer>
+
+<style>
+  .title-note {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--faint);
+  }
+
+  .contact-intro {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 32px;
+  }
+
+  .contact-intro b {
+    color: var(--text);
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .contact-item:hover {
+    color: var(--accent);
+  }
+
+  .contact-label {
+    width: 92px;
+    flex-shrink: 0;
+    color: var(--faint);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+
+  .contact-value {
+    font-size: 16px;
+    word-break: break-all;
+  }
+
+  .contact-arrow {
+    margin-left: auto;
+    color: var(--faint);
+    font-size: 14px;
+  }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    color: var(--faint);
+    font-size: 12.5px;
+  }
+</style>
