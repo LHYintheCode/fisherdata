@@ -43,4 +43,13 @@ resume-src.html # 简历 PDF 的 HTML 源文件
 
 ## 部署
 
-推送到 GitHub 仓库 → Cloudflare Pages 连接该仓库（构建命令 `npm run build`，输出目录 `dist`）→ 绑定 fisherdata.top。
+已配置 GitHub Actions 自动部署（`.github/workflows/deploy.yml`）：
+
+```bash
+git push origin main   # 自动构建并部署到 Cloudflare Pages
+```
+
+- Pages 项目：`fisherdata`（Cloudflare 账户内）
+- 自定义域：`fisherdata.top`（CNAME → fisherdata.pages.dev，Cloudflare 代理）
+- 手动部署：`wrangler pages deploy dist --project-name fisherdata`
+- 需要的 GitHub Secrets：`CLOUDFLARE_API_TOKEN`（Workers 权限）、`CLOUDFLARE_ACCOUNT_ID`
